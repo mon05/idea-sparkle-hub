@@ -6,52 +6,59 @@
 
 @layer base {
   :root {
-    --background: 30 25% 97%;
-    --foreground: 0 20% 15%;
+    --background: 30 30% 96%;
+    --foreground: 345 30% 12%;
 
-    --card: 30 20% 99%;
-    --card-foreground: 0 20% 15%;
+    --card: 30 35% 98%;
+    --card-foreground: 345 30% 12%;
 
-    --popover: 30 20% 99%;
-    --popover-foreground: 0 20% 15%;
+    --popover: 30 35% 98%;
+    --popover-foreground: 345 30% 12%;
 
-    --primary: 345 60% 30%;
-    --primary-foreground: 30 25% 97%;
+    --primary: 345 65% 32%;
+    --primary-foreground: 30 30% 98%;
 
-    --secondary: 40 50% 50%;
-    --secondary-foreground: 0 20% 15%;
+    --secondary: 38 55% 52%;
+    --secondary-foreground: 345 30% 12%;
 
-    --muted: 30 15% 92%;
-    --muted-foreground: 0 10% 45%;
+    --muted: 30 20% 90%;
+    --muted-foreground: 345 15% 40%;
 
-    --accent: 345 45% 40%;
-    --accent-foreground: 30 25% 97%;
+    --accent: 345 50% 42%;
+    --accent-foreground: 30 30% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 30 20% 88%;
-    --input: 30 20% 88%;
-    --ring: 345 60% 30%;
+    --border: 30 25% 85%;
+    --input: 30 25% 85%;
+    --ring: 345 65% 32%;
 
     --radius: 0.75rem;
 
-    /* Custom wine-themed tokens */
-    --wine-burgundy: 345 60% 30%;
-    --wine-red: 350 70% 40%;
-    --wine-gold: 40 70% 55%;
-    --wine-cream: 35 40% 95%;
-    --wine-dark: 345 40% 12%;
+    /* Wine-themed color palette */
+    --wine-burgundy: 345 65% 32%;
+    --wine-red: 350 72% 42%;
+    --wine-merlot: 340 55% 28%;
+    --wine-rose: 350 60% 65%;
+    --wine-gold: 38 75% 55%;
+    --wine-champagne: 45 60% 80%;
+    --wine-cream: 35 45% 94%;
+    --wine-dark: 345 45% 10%;
+    --wine-oak: 30 40% 25%;
 
     /* Gradients */
-    --gradient-wine: linear-gradient(135deg, hsl(345, 60%, 30%) 0%, hsl(350, 70%, 40%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(40, 70%, 55%) 0%, hsl(35, 60%, 45%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(30, 25%, 97%) 0%, hsl(30, 20%, 94%) 100%);
+    --gradient-wine: linear-gradient(135deg, hsl(345, 65%, 32%) 0%, hsl(350, 72%, 42%) 50%, hsl(340, 55%, 28%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(45, 60%, 80%) 0%, hsl(38, 75%, 55%) 50%, hsl(35, 65%, 45%) 100%);
+    --gradient-rose: linear-gradient(135deg, hsl(350, 60%, 65%) 0%, hsl(345, 50%, 55%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(30, 30%, 96%) 0%, hsl(35, 35%, 92%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(30, 30%, 96%) 0%, hsl(35, 40%, 90%) 50%, hsl(345, 20%, 94%) 100%);
 
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(345 60% 30% / 0.15);
-    --shadow-card: 0 2px 12px -2px hsl(0 0% 0% / 0.08);
-    --shadow-glow: 0 0 30px hsl(345 60% 30% / 0.2);
+    --shadow-soft: 0 4px 20px -4px hsl(345 65% 32% / 0.15);
+    --shadow-card: 0 2px 16px -2px hsl(345 30% 20% / 0.1), 0 1px 3px hsl(345 30% 20% / 0.05);
+    --shadow-glow: 0 0 40px hsl(345 65% 32% / 0.25);
+    --shadow-wine: 0 8px 32px -8px hsl(345 65% 32% / 0.3);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -64,47 +71,55 @@
   }
 
   .dark {
-    --background: 345 30% 8%;
-    --foreground: 30 20% 95%;
+    --background: 345 35% 6%;
+    --foreground: 30 25% 92%;
 
-    --card: 345 25% 12%;
-    --card-foreground: 30 20% 95%;
+    --card: 345 30% 10%;
+    --card-foreground: 30 25% 92%;
 
-    --popover: 345 25% 12%;
-    --popover-foreground: 30 20% 95%;
+    --popover: 345 30% 10%;
+    --popover-foreground: 30 25% 92%;
 
-    --primary: 345 50% 50%;
-    --primary-foreground: 30 25% 97%;
+    --primary: 350 55% 55%;
+    --primary-foreground: 345 35% 6%;
 
-    --secondary: 40 45% 45%;
-    --secondary-foreground: 30 20% 95%;
+    --secondary: 38 50% 48%;
+    --secondary-foreground: 345 35% 6%;
 
-    --muted: 345 20% 18%;
-    --muted-foreground: 30 15% 65%;
+    --muted: 345 25% 15%;
+    --muted-foreground: 30 20% 60%;
 
-    --accent: 345 40% 35%;
-    --accent-foreground: 30 20% 95%;
+    --accent: 350 45% 45%;
+    --accent-foreground: 30 25% 92%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62% 35%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 345 20% 20%;
-    --input: 345 20% 20%;
-    --ring: 345 50% 50%;
+    --border: 345 25% 18%;
+    --input: 345 25% 18%;
+    --ring: 350 55% 55%;
 
-    --wine-burgundy: 345 50% 50%;
-    --wine-red: 350 60% 55%;
-    --wine-gold: 40 60% 50%;
-    --wine-cream: 35 20% 20%;
-    --wine-dark: 345 30% 8%;
+    /* Wine-themed color palette - dark mode */
+    --wine-burgundy: 350 55% 55%;
+    --wine-red: 350 60% 58%;
+    --wine-merlot: 340 50% 45%;
+    --wine-rose: 350 55% 58%;
+    --wine-gold: 38 60% 50%;
+    --wine-champagne: 45 50% 65%;
+    --wine-cream: 35 25% 18%;
+    --wine-dark: 345 35% 6%;
+    --wine-oak: 30 35% 35%;
 
-    --gradient-wine: linear-gradient(135deg, hsl(345, 50%, 40%) 0%, hsl(350, 60%, 50%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(40, 60%, 50%) 0%, hsl(35, 50%, 40%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(345, 30%, 8%) 0%, hsl(345, 25%, 10%) 100%);
+    --gradient-wine: linear-gradient(135deg, hsl(350, 55%, 45%) 0%, hsl(350, 60%, 55%) 50%, hsl(340, 50%, 40%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(45, 50%, 55%) 0%, hsl(38, 60%, 50%) 50%, hsl(35, 55%, 42%) 100%);
+    --gradient-rose: linear-gradient(135deg, hsl(350, 55%, 55%) 0%, hsl(345, 45%, 48%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(345, 35%, 6%) 0%, hsl(345, 30%, 10%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(345, 35%, 6%) 0%, hsl(345, 30%, 10%) 50%, hsl(345, 28%, 12%) 100%);
 
-    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.4);
-    --shadow-card: 0 2px 12px -2px hsl(0 0% 0% / 0.3);
-    --shadow-glow: 0 0 30px hsl(345 50% 50% / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.5);
+    --shadow-card: 0 2px 16px -2px hsl(0 0% 0% / 0.4), 0 1px 3px hsl(0 0% 0% / 0.2);
+    --shadow-glow: 0 0 40px hsl(350 55% 55% / 0.3);
+    --shadow-wine: 0 8px 32px -8px hsl(0 0% 0% / 0.5);
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -149,8 +164,16 @@
     background: var(--gradient-gold);
   }
 
+  .gradient-rose {
+    background: var(--gradient-rose);
+  }
+
   .gradient-subtle {
     background: var(--gradient-subtle);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
   }
 
   .shadow-soft {
@@ -165,6 +188,10 @@
     box-shadow: var(--shadow-glow);
   }
 
+  .shadow-wine {
+    box-shadow: var(--shadow-wine);
+  }
+
   .text-gradient-wine {
     background: var(--gradient-wine);
     -webkit-background-clip: text;
@@ -172,9 +199,87 @@
     background-clip: text;
   }
 
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .glass-effect {
-    backdrop-filter: blur(12px);
-    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(16px);
+    background: hsl(var(--background) / 0.85);
+  }
+
+  /* Wine texture backgrounds */
+  .texture-grain {
+    position: relative;
+  }
+  
+  .texture-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  .texture-vineyard {
+    background-image: 
+      radial-gradient(ellipse at 20% 80%, hsl(var(--wine-burgundy) / 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, hsl(var(--wine-gold) / 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, hsl(var(--wine-rose) / 0.04) 0%, transparent 60%);
+  }
+
+  .texture-cork {
+    background-image: 
+      repeating-linear-gradient(
+        90deg,
+        hsl(var(--wine-oak) / 0.02) 0px,
+        transparent 1px,
+        transparent 3px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        hsl(var(--wine-oak) / 0.02) 0px,
+        transparent 1px,
+        transparent 3px
+      );
+  }
+
+  /* Decorative wine elements */
+  .wine-ring {
+    position: relative;
+  }
+
+  .wine-ring::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid hsl(var(--wine-burgundy) / 0.15);
+    opacity: 0.5;
+  }
+
+  .wine-divider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .wine-divider::before,
+  .wine-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
   }
 }
 
@@ -232,6 +337,33 @@
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pour {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 .animate-fade-in {
   animation: fade-in 0.4s ease-out forwards;
 }
@@ -242,6 +374,25 @@
 
 .animate-scale-in {
   animation: scale-in 0.3s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 0%,
+    hsl(var(--card)) 50%,
+    hsl(var(--muted)) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+.animate-pour {
+  animation: pour 0.8s ease-out forwards;
 }
 
 /* Stagger animations */

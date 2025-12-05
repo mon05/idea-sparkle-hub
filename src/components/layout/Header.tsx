@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { calculatorCategories } from "@/data/calculators";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Header = () => {
   const location = useLocation();
@@ -31,37 +32,40 @@ const Header = () => {
           </Link>
         </div>
 
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-80">
-            <nav className="flex flex-col gap-4 mt-8">
-              {calculatorCategories.map((category) => (
-                <div key={category.id}>
-                  <h3 className="font-display font-semibold mb-2 flex items-center gap-2">
-                    <span>{category.icon}</span>
-                    {category.name}
-                  </h3>
-                  <div className="flex flex-col gap-1 pl-6">
-                    {category.calculators.map((calc) => (
-                      <Link
-                        key={calc.id}
-                        to={calc.path}
-                        onClick={() => setOpen(false)}
-                        className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
-                      >
-                        {calc.name}
-                      </Link>
-                    ))}
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-80">
+              <nav className="flex flex-col gap-4 mt-8">
+                {calculatorCategories.map((category) => (
+                  <div key={category.id}>
+                    <h3 className="font-display font-semibold mb-2 flex items-center gap-2">
+                      <span>{category.icon}</span>
+                      {category.name}
+                    </h3>
+                    <div className="flex flex-col gap-1 pl-6">
+                      {category.calculators.map((calc) => (
+                        <Link
+                          key={calc.id}
+                          to={calc.path}
+                          onClick={() => setOpen(false)}
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
+                        >
+                          {calc.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </nav>
-          </SheetContent>
-        </Sheet>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
