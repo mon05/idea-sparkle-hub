@@ -54,9 +54,13 @@ export default {
         wine: {
           burgundy: "hsl(var(--wine-burgundy))",
           red: "hsl(var(--wine-red))",
+          merlot: "hsl(var(--wine-merlot))",
+          rose: "hsl(var(--wine-rose))",
           gold: "hsl(var(--wine-gold))",
+          champagne: "hsl(var(--wine-champagne))",
           cream: "hsl(var(--wine-cream))",
           dark: "hsl(var(--wine-dark))",
+          oak: "hsl(var(--wine-oak))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -87,16 +91,22 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.7" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-6px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-soft": "pulse-soft 2s ease-in-out infinite",
+        "float": "float 3s ease-in-out infinite",
       },
       boxShadow: {
         soft: "var(--shadow-soft)",
         card: "var(--shadow-card)",
         glow: "var(--shadow-glow)",
+        wine: "var(--shadow-wine)",
       },
     },
   },
