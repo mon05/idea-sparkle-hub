@@ -108,7 +108,7 @@ export const translations = {
   },
   ka: {
     // Header
-    appName: "ვაინკალკ",
+    appName: "WineCalc",
     
     // Hero
     heroTitle: "მეღვინეობის კალკულატორი",
