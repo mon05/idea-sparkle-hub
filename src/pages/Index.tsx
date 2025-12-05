@@ -2,8 +2,11 @@ import Layout from "@/components/layout/Layout";
 import CategoryCard from "@/components/calculator/CategoryCard";
 import { calculatorCategories } from "@/data/calculators";
 import { Wine } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const Index = () => {
+  const { t } = useLanguage();
+
   return (
     <Layout>
       <div className="space-y-8">
@@ -13,10 +16,10 @@ const Index = () => {
             <Wine className="h-8 w-8 text-primary-foreground" />
           </div>
           <h1 className="text-3xl md:text-4xl font-display font-bold mb-3">
-            Winemaking Calculator
+            {t.heroTitle}
           </h1>
           <p className="text-muted-foreground max-w-md mx-auto">
-            Professional calculations for acid additions, fining agents, sulfur management, and more.
+            {t.heroDescription}
           </p>
         </section>
 
@@ -30,11 +33,11 @@ const Index = () => {
         {/* Quick Tips */}
         <section className="animate-fade-in opacity-0 stagger-6">
           <div className="rounded-xl bg-primary/5 border border-primary/10 p-5">
-            <h2 className="font-display text-lg font-semibold mb-2">Quick Tips</h2>
+            <h2 className="font-display text-lg font-semibold mb-2">{t.quickTips}</h2>
             <ul className="text-sm text-muted-foreground space-y-1.5">
-              <li>• Always conduct bench trials before making large batch adjustments</li>
-              <li>• Record all additions in your cellar log for traceability</li>
-              <li>• Double-check calculations before adding any chemicals</li>
+              <li>• {t.tip1}</li>
+              <li>• {t.tip2}</li>
+              <li>• {t.tip3}</li>
             </ul>
           </div>
         </section>
