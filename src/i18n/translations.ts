@@ -180,7 +180,7 @@ export const translations = {
     currentLevel: "მიმდინარე დონე",
     desiredLevel: "სასურველი დონე",
     required: "საჭირო",
-    footer: "ვაინკალკ — პროფესიონალური მეღვინეობის კალკულატორი",
+    footer: "WineCalc — პროფესიონალური მეღვინეობის კალკულატორი",
     calculatorsCount: "კალკულატორი",
     
     // Conversion units
