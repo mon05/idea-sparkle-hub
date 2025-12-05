@@ -5,11 +5,14 @@ import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { calculatorCategories } from "@/data/calculators";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageToggle } from "@/components/LanguageToggle";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const Header = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 glass-effect">
@@ -27,12 +30,13 @@ const Header = () => {
               <Wine className="h-5 w-5 text-primary-foreground" />
             </div>
             <span className="font-display text-xl font-semibold tracking-tight">
-              WineCalc
+              {t.appName}
             </span>
           </Link>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
+          <LanguageToggle />
           <ThemeToggle />
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
@@ -42,26 +46,32 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-80">
               <nav className="flex flex-col gap-4 mt-8">
-                {calculatorCategories.map((category) => (
-                  <div key={category.id}>
-                    <h3 className="font-display font-semibold mb-2 flex items-center gap-2">
-                      <span>{category.icon}</span>
-                      {category.name}
-                    </h3>
-                    <div className="flex flex-col gap-1 pl-6">
-                      {category.calculators.map((calc) => (
-                        <Link
-                          key={calc.id}
-                          to={calc.path}
-                          onClick={() => setOpen(false)}
-                          className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
-                        >
-                          {calc.name}
-                        </Link>
-                      ))}
+                {calculatorCategories.map((category) => {
+                  const categoryTranslation = t.categories[category.id as keyof typeof t.categories];
+                  return (
+                    <div key={category.id}>
+                      <h3 className="font-display font-semibold mb-2 flex items-center gap-2">
+                        <span>{category.icon}</span>
+                        {categoryTranslation?.name || category.name}
+                      </h3>
+                      <div className="flex flex-col gap-1 pl-6">
+                        {category.calculators.map((calc) => {
+                          const calcTranslation = t.calculators[calc.id as keyof typeof t.calculators];
+                          return (
+                            <Link
+                              key={calc.id}
+                              to={calc.path}
+                              onClick={() => setOpen(false)}
+                              className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
+                            >
+                              {calcTranslation?.name || calc.name}
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </nav>
             </SheetContent>
           </Sheet>
