@@ -12,6 +12,30 @@ serve(async (req) => {
 
   try {
     const { message } = await req.json();
+    
+    // Input validation
+    if (!message || typeof message !== 'string') {
+      return new Response(JSON.stringify({ error: 'Invalid message format' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+    
+    const trimmedMessage = message.trim();
+    if (trimmedMessage.length === 0) {
+      return new Response(JSON.stringify({ error: 'Message cannot be empty' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+    
+    if (trimmedMessage.length > 2000) {
+      return new Response(JSON.stringify({ error: 'Message too long (max 2000 characters)' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+    
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
     
     if (!LOVABLE_API_KEY) {
@@ -19,7 +43,7 @@ serve(async (req) => {
       throw new Error('LOVABLE_API_KEY is not configured');
     }
 
-    console.log('Received message:', message);
+    console.log('Received message:', trimmedMessage.substring(0, 100) + (trimmedMessage.length > 100 ? '...' : ''));
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -46,7 +70,7 @@ If asked about specific calculations, suggest which calculator in the app might 
 Available calculators: Tartaric Acid, Citric Acid, Malic Acid, Bentonite, PMS, DAP, Alcohol Addition/Dilution, Sorbic Acid, Carbon, PVPP, Tannin, Copper Sulfate, Hydrogen Peroxide, Deacidification, Fining Trial.
 Respond in the same language as the user's question.`
           },
-          { role: "user", content: message }
+          { role: "user", content: trimmedMessage }
         ],
       }),
     });
