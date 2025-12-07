@@ -7,6 +7,7 @@ import { calculatorCategories } from "@/data/calculators";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useLanguage } from "@/i18n/LanguageContext";
+import CalculationHistory from "@/components/CalculationHistory";
 
 const Header = () => {
   const location = useLocation();
@@ -36,6 +37,7 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-1">
+          <CalculationHistory />
           <LanguageToggle />
           <ThemeToggle />
           <Sheet open={open} onOpenChange={setOpen}>
