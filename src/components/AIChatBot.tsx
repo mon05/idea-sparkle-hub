@@ -14,6 +14,36 @@ interface Message {
   content: string;
 }
 
+const RATE_LIMIT_KEY = 'wine_tips_rate_limit';
+const RATE_LIMIT_WINDOW_MS = 60000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 10;
+
+const checkRateLimit = (): boolean => {
+  const now = Date.now();
+  const storedData = localStorage.getItem(RATE_LIMIT_KEY);
+  let requests: number[] = [];
+  
+  if (storedData) {
+    try {
+      requests = JSON.parse(storedData);
+    } catch {
+      requests = [];
+    }
+  }
+  
+  // Filter to only requests within the window
+  requests = requests.filter(timestamp => now - timestamp < RATE_LIMIT_WINDOW_MS);
+  
+  if (requests.length >= MAX_REQUESTS_PER_WINDOW) {
+    return false;
+  }
+  
+  // Add current request and save
+  requests.push(now);
+  localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(requests));
+  return true;
+};
+
 const AIChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -31,13 +61,28 @@ const AIChatBot = () => {
     ? "გამარჯობა! მე ვარ თქვენი მეღვინეობის ექსპერტი. დამისვით ნებისმიერი კითხვა ღვინის დამზადების შესახებ."
     : "Hello! I'm your winemaking expert. Ask me anything about wine production, chemistry, or best practices.";
 
+  const rateLimitText = language === 'ka'
+    ? "გთხოვთ დაელოდოთ სანამ მეტ კითხვას დასვამთ"
+    : "Please wait before sending more messages";
+
   const sendMessage = async () => {
-    if (!input.trim() || isLoading) return;
+    const trimmedInput = input.trim();
+    if (!trimmedInput || isLoading) return;
+
+    // Client-side rate limiting
+    if (!checkRateLimit()) {
+      toast({
+        title: language === 'ka' ? "შეცდომა" : "Rate Limited",
+        description: rateLimitText,
+        variant: "destructive",
+      });
+      return;
+    }
 
     const userMessage: Message = {
       id: crypto.randomUUID(),
       role: 'user',
-      content: input.trim(),
+      content: trimmedInput,
     };
 
     setMessages((prev) => [...prev, userMessage]);
