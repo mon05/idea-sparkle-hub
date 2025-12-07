@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import { LanguageProvider } from "./i18n/LanguageContext";
+import AIChatBot from "./components/AIChatBot";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import CategoryPage from "./pages/CategoryPage";
@@ -79,6 +80,7 @@ const App = () => (
           
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <AIChatBot />
         </BrowserRouter>
         </TooltipProvider>
       </QueryClientProvider>

@@ -77,6 +77,20 @@ export const translations = {
     required: "Required",
     footer: "WineCalc — Professional Winemaking Calculator",
     calculatorsCount: "calculators",
+    clear: "Clear",
+    saved: "Saved",
+    savedToHistory: "Calculation saved to history",
+    calculationHistory: "Calculation History",
+    noCalculations: "No calculations yet",
+    clearAll: "Clear All",
+    confirmClear: "Are you sure you want to clear all history?",
+    cancel: "Cancel",
+    delete: "Delete",
+    wineExpert: "Wine Expert",
+    wineExpertWelcome: "Hello! I'm your winemaking expert. Ask me anything about wine production, chemistry, or best practices.",
+    askWinemaking: "Ask a winemaking question...",
+    error: "Error",
+    failedResponse: "Failed to get response",
     
     // Conversion units
     units: {
@@ -182,6 +196,20 @@ export const translations = {
     required: "საჭირო",
     footer: "WineCalc — პროფესიონალური მეღვინეობის კალკულატორი",
     calculatorsCount: "კალკულატორი",
+    clear: "გასუფთავება",
+    saved: "შენახულია",
+    savedToHistory: "გამოთვლა ისტორიაში შენახულია",
+    calculationHistory: "გამოთვლების ისტორია",
+    noCalculations: "ისტორია ცარიელია",
+    clearAll: "ყველას წაშლა",
+    confirmClear: "ნამდვილად გსურთ მთელი ისტორიის წაშლა?",
+    cancel: "გაუქმება",
+    delete: "წაშლა",
+    wineExpert: "ღვინის ექსპერტი",
+    wineExpertWelcome: "გამარჯობა! მე ვარ თქვენი მეღვინეობის ექსპერტი. დამისვით ნებისმიერი კითხვა ღვინის დამზადების შესახებ.",
+    askWinemaking: "დასვით კითხვა მეღვინეობაზე...",
+    error: "შეცდომა",
+    failedResponse: "ვერ მოხერხდა პასუხის მიღება",
     
     // Conversion units
     units: {
