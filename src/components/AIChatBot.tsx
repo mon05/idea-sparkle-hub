@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { MessageCircle, Send, Bot, User, X, Loader2 } from "lucide-react";
+import { Wine, Send, Bot, User, X, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -129,7 +129,7 @@ const AIChatBot = () => {
           size="icon"
           className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-wine bg-primary hover:bg-primary/90 z-50"
         >
-          <MessageCircle className="h-6 w-6" />
+          <Wine className="h-6 w-6" />
         </Button>
       </SheetTrigger>
       <SheetContent className="w-full sm:max-w-md flex flex-col p-0">
