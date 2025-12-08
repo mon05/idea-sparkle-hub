@@ -127,7 +127,7 @@ const AIChatBot = () => {
       <SheetTrigger asChild>
         <Button
           size="icon"
-          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-wine bg-primary hover:bg-primary/90 z-50"
+          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-wine bg-primary hover:bg-primary/90 z-50 animate-[pulse_3s_ease-in-out_infinite] hover:animate-none ring-4 ring-primary/20 hover:ring-primary/40 transition-all duration-300"
         >
           <Wine className="h-6 w-6" />
         </Button>
