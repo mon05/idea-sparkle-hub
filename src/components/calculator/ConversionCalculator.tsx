@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ConversionCategory, ConversionUnit } from "@/types/calculator";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 interface ConversionCalculatorProps {
   category: ConversionCategory;
@@ -11,6 +12,7 @@ interface ConversionCalculatorProps {
 const ConversionCalculator = ({ category }: ConversionCalculatorProps) => {
   const [values, setValues] = useState<Record<string, string>>({});
   const [activeUnit, setActiveUnit] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   const handleInputChange = (unit: ConversionUnit, inputValue: string) => {
     if (inputValue === "" || inputValue === ".") {
@@ -56,20 +58,35 @@ const ConversionCalculator = ({ category }: ConversionCalculatorProps) => {
     setActiveUnit(null);
   };
 
+  // Get translated unit name
+  const getUnitName = (unit: ConversionUnit): string => {
+    const unitTranslations = t.units[category.id as keyof typeof t.units];
+    if (unitTranslations && unit.id in unitTranslations) {
+      return unitTranslations[unit.id as keyof typeof unitTranslations];
+    }
+    return unit.name;
+  };
+
+  // Get translated category name
+  const getCategoryName = (): string => {
+    const calcTranslation = t.calculators[category.id as keyof typeof t.calculators];
+    return calcTranslation?.name || category.name;
+  };
+
   return (
     <Card variant="elevated" className="animate-scale-in">
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle>{category.name} Conversion</CardTitle>
+        <CardTitle>{getCategoryName()} {t.conversionTitle}</CardTitle>
         <button
           onClick={clearAll}
           className="text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
-          Clear
+          {t.clear}
         </button>
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="text-sm text-muted-foreground mb-4">
-          Enter a value in any field to convert to all other units
+          {t.enterValueHint}
         </p>
         {category.units.map((unit, index) => (
           <div 
@@ -77,7 +94,7 @@ const ConversionCalculator = ({ category }: ConversionCalculatorProps) => {
             className={`animate-fade-in opacity-0 stagger-${Math.min(index + 1, 6)}`}
           >
             <Label htmlFor={unit.id} className="text-sm font-medium mb-1.5 block">
-              {unit.name} ({unit.symbol})
+              {getUnitName(unit)} ({unit.symbol})
             </Label>
             <Input
               id={unit.id}
