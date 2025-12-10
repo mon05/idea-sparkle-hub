@@ -61,10 +61,29 @@ export const translations = {
       "sorbic-acid": { name: "Sorbic Acid", description: "Calculate sorbic acid for stabilization" },
       "alcohol-addition": { name: "Alcohol Addition", description: "Calculate spirit additions" },
       "alcohol-dilution": { name: "Alcohol Dilution", description: "Calculate water dilution for alcohol" },
-      concentration: { name: "Concentration", description: "Convert between concentration units" },
-      volume: { name: "Volume", description: "Convert between volume units" },
-      mass: { name: "Mass", description: "Convert between mass units" },
+      concentration: { 
+        name: "Concentration", 
+        description: "Convert between concentration units",
+        pageTitle: "Concentration Converter",
+        pageDescription: "Convert between different concentration units commonly used in winemaking."
+      },
+      volume: { 
+        name: "Volume", 
+        description: "Convert between volume units",
+        pageTitle: "Volume Converter",
+        pageDescription: "Convert between volume units from nanolitres to kilolitres."
+      },
+      mass: { 
+        name: "Mass", 
+        description: "Convert between mass units",
+        pageTitle: "Mass Converter",
+        pageDescription: "Convert between mass units from nanograms to tonnes."
+      },
     },
+    
+    // Conversion common
+    conversionTitle: "Conversion",
+    enterValueHint: "Enter a value in any field to convert to all other units",
     
     // Common
     calculate: "Calculate",
@@ -180,10 +199,29 @@ export const translations = {
       "sorbic-acid": { name: "სორბინმჟავა", description: "გამოთვალეთ სორბინმჟავა სტაბილიზაციისთვის" },
       "alcohol-addition": { name: "ალკოჰოლის დამატება", description: "გამოთვალეთ სპირტის დამატება" },
       "alcohol-dilution": { name: "ალკოჰოლის განზავება", description: "გამოთვალეთ წყლით განზავება ალკოჰოლისთვის" },
-      concentration: { name: "კონცენტრაცია", description: "კონვერტაცია კონცენტრაციის ერთეულებს შორის" },
-      volume: { name: "მოცულობა", description: "კონვერტაცია მოცულობის ერთეულებს შორის" },
-      mass: { name: "მასა", description: "კონვერტაცია მასის ერთეულებს შორის" },
+      concentration: { 
+        name: "კონცენტრაცია", 
+        description: "კონვერტაცია კონცენტრაციის ერთეულებს შორის",
+        pageTitle: "კონცენტრაციის კონვერტორი",
+        pageDescription: "კონვერტაცია სხვადასხვა კონცენტრაციის ერთეულებს შორის, რომლებიც გამოიყენება მეღვინეობაში."
+      },
+      volume: { 
+        name: "მოცულობა", 
+        description: "კონვერტაცია მოცულობის ერთეულებს შორის",
+        pageTitle: "მოცულობის კონვერტორი",
+        pageDescription: "კონვერტაცია მოცულობის ერთეულებს შორის ნანოლიტრიდან კილოლიტრამდე."
+      },
+      mass: { 
+        name: "მასა", 
+        description: "კონვერტაცია მასის ერთეულებს შორის",
+        pageTitle: "მასის კონვერტორი",
+        pageDescription: "კონვერტაცია მასის ერთეულებს შორის ნანოგრამიდან ტონამდე."
+      },
     },
+    
+    // Conversion common
+    conversionTitle: "კონვერტაცია",
+    enterValueHint: "შეიყვანეთ მნიშვნელობა ნებისმიერ ველში სხვა ერთეულებში გადასაყვანად",
     
     // Common
     calculate: "გამოთვლა",
