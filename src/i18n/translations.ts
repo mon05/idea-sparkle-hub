@@ -470,7 +470,7 @@ export const translations = {
       },
       sugarAdjustment: {
         title: "Sugar Adjustment",
-        description: "Calculate sugar additions to increase Brix levels for chaptalization.",
+        description: "Calculate sugar additions to increase Brix levels.",
         calcTitle: "Sugar Adjustment Calculator",
         calcDescription: "Calculate sugar needed to reach target Brix level",
         resultLabel: "Sugar needed",
