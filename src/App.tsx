@@ -32,6 +32,7 @@ import CopperSulfatePage from "./pages/calculators/CopperSulfatePage";
 import HydrogenPeroxidePage from "./pages/calculators/HydrogenPeroxidePage";
 import DeacidificationPage from "./pages/calculators/DeacidificationPage";
 import FiningTrialPage from "./pages/calculators/FiningTrialPage";
+import SugarAdjustmentPage from "./pages/calculators/SugarAdjustmentPage";
 
 const queryClient = new QueryClient();
 
@@ -69,6 +70,9 @@ const App = () => (
           <Route path="/calculator/pms" element={<PMSPage />} />
           <Route path="/calculator/copper-sulfate" element={<CopperSulfatePage />} />
           <Route path="/calculator/hydrogen-peroxide" element={<HydrogenPeroxidePage />} />
+          
+          {/* Sugar Adjustments */}
+          <Route path="/calculator/sugar-adjustment" element={<SugarAdjustmentPage />} />
           
           {/* Nutrients & Stabilizers */}
           <Route path="/calculator/dap" element={<DAPPage />} />

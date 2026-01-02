@@ -1,3 +1,4 @@
+// Wine Calculator Translations
 export type Language = 'en' | 'ka';
 
 export const translations = {
@@ -37,6 +38,10 @@ export const translations = {
         name: "Alcohol Adjustments",
         description: "Alcohol additions and dilutions",
       },
+      sugar: {
+        name: "Sugar Adjustments",
+        description: "Sugar additions for chaptalization",
+      },
       conversions: {
         name: "Unit Conversions",
         description: "General conversion calculators",
@@ -59,6 +64,7 @@ export const translations = {
       "hydrogen-peroxide": { name: "Hydrogen Peroxide", description: "Decrease SO2 with H2O2" },
       dap: { name: "DAP Addition", description: "Calculate diammonium phosphate additions" },
       "sorbic-acid": { name: "Sorbic Acid", description: "Calculate sorbic acid for stabilization" },
+      "sugar-adjustment": { name: "Sugar Adjustment", description: "Calculate sugar additions for Brix increase" },
       "alcohol-addition": { name: "Alcohol Addition", description: "Calculate spirit additions" },
       "alcohol-dilution": { name: "Alcohol Dilution", description: "Calculate water dilution for alcohol" },
       concentration: { 
@@ -462,6 +468,26 @@ export const translations = {
           "Consider impact on flavor concentration",
         ],
       },
+      sugarAdjustment: {
+        title: "Sugar Adjustment",
+        description: "Calculate sugar additions to increase Brix levels for chaptalization.",
+        calcTitle: "Sugar Adjustment Calculator",
+        calcDescription: "Calculate sugar needed to reach target Brix level",
+        resultLabel: "Sugar needed",
+        fields: {
+          volume: { label: "Must/Wine Volume", helpText: "Volume of must or wine to adjust" },
+          currentBrix: { label: "Current Brix", helpText: "Measured sugar content" },
+          targetBrix: { label: "Target Brix", helpText: "Desired sugar content" },
+        },
+        result: "Add {amount} grams of sugar ({perLiter} g/L) to increase Brix by {difference}°",
+        noAddition: "No sugar addition needed - current Brix is at or above target",
+        notes: [
+          "Chaptalization is regulated or prohibited in some regions",
+          "Add sugar before or during fermentation, not after",
+          "Dissolve sugar in a small amount of must before adding",
+          "1°Brix increase ≈ 0.55% potential alcohol increase",
+        ],
+      },
     },
   },
   ka: {
@@ -500,6 +526,10 @@ export const translations = {
         name: "ალკოჰოლის კორექტირება",
         description: "ალკოჰოლის დამატება და განზავება",
       },
+      sugar: {
+        name: "შაქრის კორექტირება",
+        description: "შაქრის დამატება შაპტალიზაციისთვის",
+      },
       conversions: {
         name: "ერთეულების კონვერტაცია",
         description: "ზოგადი კონვერტაციის კალკულატორები",
@@ -522,6 +552,7 @@ export const translations = {
       "hydrogen-peroxide": { name: "წყალბადის ზეჟანგი", description: "შეამცირეთ SO2 H2O2-ით" },
       dap: { name: "DAP დამატება", description: "გამოთვალეთ დიამონიუმ ფოსფატის დამატება" },
       "sorbic-acid": { name: "სორბინმჟავა", description: "გამოთვალეთ სორბინმჟავა სტაბილიზაციისთვის" },
+      "sugar-adjustment": { name: "შაქრის კორექტირება", description: "გამოთვალეთ შაქრის დამატება ბრიქსის გასაზრდელად" },
       "alcohol-addition": { name: "ალკოჰოლის დამატება", description: "გამოთვალეთ სპირტის დამატება" },
       "alcohol-dilution": { name: "ალკოჰოლის განზავება", description: "გამოთვალეთ წყლით განზავება ალკოჰოლისთვის" },
       concentration: { 
@@ -923,6 +954,26 @@ export const translations = {
           "გამოიყენეთ დეიონიზებული ან დისტილირებული წყალი",
           "განზავება პროპორციულად მოქმედებს ღვინის ყველა კომპონენტზე",
           "გაითვალისწინეთ გავლენა გემოს კონცენტრაციაზე",
+        ],
+      },
+      sugarAdjustment: {
+        title: "შაქრის კორექტირება",
+        description: "გამოთვალეთ შაქრის დამატება ბრიქსის დონეების გასაზრდელად შაპტალიზაციისთვის.",
+        calcTitle: "შაქრის კორექტირების კალკულატორი",
+        calcDescription: "გამოთვალეთ შაქარი სამიზნე ბრიქსის დონის მისაღწევად",
+        resultLabel: "საჭირო შაქარი",
+        fields: {
+          volume: { label: "ტკბილის/ღვინის მოცულობა", helpText: "ტკბილის ან ღვინის მოცულობა კორექტირებისთვის" },
+          currentBrix: { label: "მიმდინარე ბრიქსი", helpText: "გაზომილი შაქრის შემცველობა" },
+          targetBrix: { label: "სამიზნე ბრიქსი", helpText: "სასურველი შაქრის შემცველობა" },
+        },
+        result: "დაამატეთ {amount} გრამი შაქარი ({perLiter} გ/ლ) ბრიქსის {difference}°-ით გასაზრდელად",
+        noAddition: "შაქრის დამატება არ არის საჭირო - მიმდინარე ბრიქსი უკვე სამიზნეზე ან მეტია",
+        notes: [
+          "შაპტალიზაცია რეგულირებულია ან აკრძალულია ზოგიერთ რეგიონში",
+          "დაამატეთ შაქარი ფერმენტაციამდე ან მის დროს, არა შემდეგ",
+          "გახსენით შაქარი მცირე რაოდენობის ტკბილში დამატებამდე",
+          "1°ბრიქსის ზრდა ≈ 0.55% პოტენციური ალკოჰოლის ზრდა",
         ],
       },
     },
