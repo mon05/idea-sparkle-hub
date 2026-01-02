@@ -38,6 +38,15 @@ export const calculatorCategories: CalculatorCategory[] = [
     ],
   },
   {
+    id: "sugar",
+    name: "Sugar Adjustments",
+    description: "Sugar additions for chaptalization",
+    icon: "🍬",
+    calculators: [
+      { id: "sugar-adjustment", name: "Sugar Adjustment", description: "Calculate sugar additions for Brix increase", path: "/calculator/sugar-adjustment" },
+    ],
+  },
+  {
     id: "nutrients",
     name: "Nutrients & Stabilizers",
     description: "Yeast nutrients and stabilizers",
