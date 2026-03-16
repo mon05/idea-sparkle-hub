@@ -8,6 +8,7 @@ export interface CellarTask {
   completed: boolean;
   notified: boolean;
   createdAt: number;
+  recurringDays?: number;
 }
 
 const STORAGE_KEY = 'winecalc_cellar_tasks';
