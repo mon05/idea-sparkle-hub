@@ -8,6 +8,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useLanguage } from "@/i18n/LanguageContext";
 import CalculationHistory from "@/components/CalculationHistory";
+import CellarTasks from "@/components/CellarTasks";
 
 const Header = () => {
   const location = useLocation();
