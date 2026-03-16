@@ -1,11 +1,25 @@
 import Layout from "@/components/layout/Layout";
 import CategoryCard from "@/components/calculator/CategoryCard";
 import { calculatorCategories } from "@/data/calculators";
-import { Wine } from "lucide-react";
+import { Wine, Star } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useFavorites } from "@/hooks/useFavorites";
+import CalculatorCard from "@/components/calculator/CalculatorCard";
+import { Calculator } from "@/types/calculator";
 
 const Index = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const { favorites } = useFavorites();
+
+  // Get all favorite calculators
+  const favoriteCalculators: Calculator[] = [];
+  calculatorCategories.forEach((cat) => {
+    cat.calculators.forEach((calc) => {
+      if (favorites.includes(calc.id)) {
+        favoriteCalculators.push(calc);
+      }
+    });
+  });
 
   return (
     <Layout>
@@ -22,6 +36,21 @@ const Index = () => {
             {t.heroDescription}
           </p>
         </section>
+
+        {/* Favorites Section */}
+        {favoriteCalculators.length > 0 && (
+          <section className="animate-fade-in">
+            <h2 className="font-display text-lg font-semibold mb-3 flex items-center gap-2">
+              <Star className="h-5 w-5 fill-secondary text-secondary" />
+              {language === 'ka' ? 'ფავორიტები' : 'Favorites'}
+            </h2>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {favoriteCalculators.map((calc, index) => (
+                <CalculatorCard key={calc.id} calculator={calc} index={index} />
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Categories Grid */}
         <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

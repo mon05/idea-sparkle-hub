@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { History, Trash2, Clock } from "lucide-react";
+import { History, Trash2, Clock, FileDown } from "lucide-react";
 import { useCalculationHistory, CalculationEntry } from "@/hooks/useCalculationHistory";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { exportSingleCalculation, exportHistoryPdf } from "@/utils/exportPdf";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -28,6 +29,7 @@ const CalculationHistory = () => {
   const confirmClearText = language === 'ka' 
     ? "ნამდვილად გსურთ მთელი ისტორიის წაშლა?"
     : "Are you sure you want to clear all history?";
+  const exportAllText = language === 'ka' ? "ექსპორტი PDF" : "Export PDF";
 
   const formatDate = (timestamp: number) => {
     const date = new Date(timestamp);
@@ -64,28 +66,40 @@ const CalculationHistory = () => {
               <History className="h-5 w-5 text-primary" />
               {titleText}
             </SheetTitle>
-            {history.length > 0 && (
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button variant="ghost" size="sm" className="text-destructive">
-                    <Trash2 className="h-4 w-4 mr-1" />
-                    {clearText}
+            <div className="flex items-center gap-1">
+              {history.length > 0 && (
+                <>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => exportHistoryPdf(history)}
+                  >
+                    <FileDown className="h-4 w-4 mr-1" />
+                    {exportAllText}
                   </Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>{clearText}</AlertDialogTitle>
-                    <AlertDialogDescription>{confirmClearText}</AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>{language === 'ka' ? 'გაუქმება' : 'Cancel'}</AlertDialogCancel>
-                    <AlertDialogAction onClick={clearHistory}>
-                      {language === 'ka' ? 'წაშლა' : 'Delete'}
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            )}
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button variant="ghost" size="sm" className="text-destructive">
+                        <Trash2 className="h-4 w-4 mr-1" />
+                        {clearText}
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>{clearText}</AlertDialogTitle>
+                        <AlertDialogDescription>{confirmClearText}</AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>{language === 'ka' ? 'გაუქმება' : 'Cancel'}</AlertDialogCancel>
+                        <AlertDialogAction onClick={clearHistory}>
+                          {language === 'ka' ? 'წაშლა' : 'Delete'}
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </>
+              )}
+            </div>
           </div>
         </SheetHeader>
 
@@ -109,14 +123,25 @@ const CalculationHistory = () => {
                         {formatDate(entry.timestamp)}
                       </p>
                     </div>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
-                      onClick={() => removeEntry(entry.id)}
-                    >
-                      <Trash2 className="h-3 w-3" />
-                    </Button>
+                    <div className="flex items-center gap-0.5">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
+                        onClick={() => exportSingleCalculation(entry)}
+                        title={language === 'ka' ? 'ექსპორტი' : 'Export PDF'}
+                      >
+                        <FileDown className="h-3 w-3" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
+                        onClick={() => removeEntry(entry.id)}
+                      >
+                        <Trash2 className="h-3 w-3" />
+                      </Button>
+                    </div>
                   </div>
                   <div className="mt-2 pt-2 border-t border-border/50">
                     <p className="text-xs text-muted-foreground mb-1">

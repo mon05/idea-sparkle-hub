@@ -38,6 +38,7 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-1">
+          <CellarTasks />
           <CalculationHistory />
           <LanguageToggle />
           <ThemeToggle />
