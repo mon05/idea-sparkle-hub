@@ -8,6 +8,7 @@ export interface CellarTask {
   completed: boolean;
   notified: boolean;
   createdAt: number;
+  recurringDays?: number;
 }
 
 const STORAGE_KEY = 'winecalc_cellar_tasks';
@@ -34,7 +35,7 @@ export const useCellarTasks = () => {
     }
   }, []);
 
-  const addTask = useCallback((task: Omit<CellarTask, 'id' | 'completed' | 'notified' | 'createdAt'>) => {
+  const addTask = useCallback((task: Omit<CellarTask, 'id' | 'completed' | 'notified' | 'createdAt'> & { recurringDays?: number }) => {
     const newTask: CellarTask = {
       ...task,
       id: crypto.randomUUID(),
