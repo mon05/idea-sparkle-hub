@@ -35,7 +35,7 @@ export const useCellarTasks = () => {
     }
   }, []);
 
-  const addTask = useCallback((task: Omit<CellarTask, 'id' | 'completed' | 'notified' | 'createdAt'>) => {
+  const addTask = useCallback((task: Omit<CellarTask, 'id' | 'completed' | 'notified' | 'createdAt'> & { recurringDays?: number }) => {
     const newTask: CellarTask = {
       ...task,
       id: crypto.randomUUID(),
