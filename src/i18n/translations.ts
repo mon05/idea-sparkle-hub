@@ -551,6 +551,10 @@ export const translations = {
         name: "შაქრის კორექტირება",
         description: "შაქრის დამატება შაპტალიზაციისთვის",
       },
+      analysis: {
+        name: "ღვინის ანალიზი",
+        description: "მჟავიანობის ანალიზის კალკულატორები",
+      },
       conversions: {
         name: "ერთეულების კონვერტაცია",
         description: "ზოგადი კონვერტაციის კალკულატორები",
@@ -574,6 +578,9 @@ export const translations = {
       dap: { name: "DAP დამატება", description: "გამოთვალეთ დიამონიუმ ფოსფატის დამატება" },
       "sorbic-acid": { name: "სორბინმჟავა", description: "გამოთვალეთ სორბინმჟავა სტაბილიზაციისთვის" },
       "sugar-adjustment": { name: "შაქრის კორექტირება", description: "გამოთვალეთ შაქრის დამატება ბრიქსის გასაზრდელად" },
+      "sugar-by-density": { name: "შაქარი სიმკვრივით", description: "შაქრის დონის შეფასება სიმკვრივისა და ტემპერატურის მიხედვით" },
+      "total-acidity": { name: "საერთო მჟავიანობა", description: "TA გამოთვლა ტიტრაციის მონაცემებით" },
+      "volatile-acidity": { name: "აქროლადი მჟავიანობა", description: "VA გამოთვლა დისტილაციის შედეგებით" },
       "alcohol-addition": { name: "ალკოჰოლის დამატება", description: "გამოთვალეთ სპირტის დამატება" },
       "alcohol-dilution": { name: "ალკოჰოლის განზავება", description: "გამოთვალეთ წყლით განზავება ალკოჰოლისთვის" },
       concentration: { 
