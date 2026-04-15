@@ -42,6 +42,10 @@ export const translations = {
         name: "Sugar Adjustments",
         description: "Sugar additions for chaptalization",
       },
+      analysis: {
+        name: "Wine Analysis",
+        description: "Acidity analysis calculators",
+      },
       conversions: {
         name: "Unit Conversions",
         description: "General conversion calculators",
@@ -65,6 +69,9 @@ export const translations = {
       dap: { name: "DAP Addition", description: "Calculate diammonium phosphate additions" },
       "sorbic-acid": { name: "Sorbic Acid", description: "Calculate sorbic acid for stabilization" },
       "sugar-adjustment": { name: "Sugar Adjustment", description: "Calculate sugar additions for Brix increase" },
+      "sugar-by-density": { name: "Sugar by Density", description: "Estimate sugar from density & temperature" },
+      "total-acidity": { name: "Total Acidity", description: "Calculate TA from titration data" },
+      "volatile-acidity": { name: "Volatile Acidity", description: "Calculate VA from distillation results" },
       "alcohol-addition": { name: "Alcohol Addition", description: "Calculate spirit additions" },
       "alcohol-dilution": { name: "Alcohol Dilution", description: "Calculate water dilution for alcohol" },
       concentration: { 
