@@ -9,7 +9,7 @@ import { toast } from "sonner";
 
 const TotalAcidityPage = () => {
   const { language } = useLanguage();
-  const { addCalculation } = useCalculationHistory();
+  const { addEntry } = useCalculationHistory();
   const [naohVolume, setNaohVolume] = useState("");
   const [naohNormality, setNaohNormality] = useState("0.1");
   const [sampleVolume, setSampleVolume] = useState("10");
@@ -34,7 +34,7 @@ const TotalAcidityPage = () => {
       taSulfuric: Math.round(taSulfuric * 100) / 100,
     });
 
-    addCalculation({
+    addEntry({
       calculator: isKa ? "საერთო მჟავიანობა" : "Total Acidity",
       inputs: { naohVolume: vNaOH, normality, sampleVolume: vSample },
       result: `${taTartaric.toFixed(2)} g/L (tartaric)`,

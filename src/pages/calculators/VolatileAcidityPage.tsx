@@ -9,7 +9,7 @@ import { toast } from "sonner";
 
 const VolatileAcidityPage = () => {
   const { language } = useLanguage();
-  const { addCalculation } = useCalculationHistory();
+  const { addEntry } = useCalculationHistory();
   const [naohVolume, setNaohVolume] = useState("");
   const [naohNormality, setNaohNormality] = useState("0.01");
   const [distillateVolume, setDistillateVolume] = useState("100");
@@ -46,7 +46,7 @@ const VolatileAcidityPage = () => {
       correctedVa: Math.round(correctedVa * 100) / 100,
     });
 
-    addCalculation({
+    addEntry({
       calculator: isKa ? "აქროლადი მჟავიანობა" : "Volatile Acidity",
       inputs: { naohVolume: vNaOH, normality, sampleVolume: vSample, freeSO2: so2 },
       result: `${correctedVa.toFixed(2)} g/L (acetic)`,

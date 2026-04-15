@@ -9,7 +9,7 @@ import { toast } from "sonner";
 
 const SugarByDensityPage = () => {
   const { language } = useLanguage();
-  const { addCalculation } = useCalculationHistory();
+  const { addEntry } = useCalculationHistory();
   const [temperature, setTemperature] = useState("");
   const [density, setDensity] = useState("");
   const [result, setResult] = useState<{ sugar: number; correctedDensity: number; potentialAlcohol: number } | null>(null);
@@ -44,7 +44,7 @@ const SugarByDensityPage = () => {
 
     setResult({ sugar: Math.round(sugar * 10) / 10, correctedDensity: Math.round(correctedDensity * 10000) / 10000, potentialAlcohol: Math.round(potentialAlcohol * 100) / 100 });
 
-    addCalculation({
+    addEntry({
       calculator: isKa ? "შაქარი სიმკვრივით" : "Sugar by Density",
       inputs: { temperature: temp, density: dens },
       result: `${sugar.toFixed(1)} g/L`,
