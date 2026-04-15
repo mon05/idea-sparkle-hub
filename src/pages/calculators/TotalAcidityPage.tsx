@@ -35,9 +35,12 @@ const TotalAcidityPage = () => {
     });
 
     addEntry({
-      calculator: isKa ? "საერთო მჟავიანობა" : "Total Acidity",
+      calculatorId: "total-acidity",
+      calculatorName: isKa ? "საერთო მჟავიანობა" : "Total Acidity",
       inputs: { naohVolume: vNaOH, normality, sampleVolume: vSample },
-      result: `${taTartaric.toFixed(2)} g/L (tartaric)`,
+      result: taTartaric,
+      unit: "g/L",
+      details: `${taTartaric.toFixed(2)} g/L (tartaric), ${taSulfuric.toFixed(2)} g/L (sulfuric)`,
     });
     toast.success(isKa ? "შენახულია" : "Saved");
   };

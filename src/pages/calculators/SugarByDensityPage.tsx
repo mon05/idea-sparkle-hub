@@ -45,9 +45,12 @@ const SugarByDensityPage = () => {
     setResult({ sugar: Math.round(sugar * 10) / 10, correctedDensity: Math.round(correctedDensity * 10000) / 10000, potentialAlcohol: Math.round(potentialAlcohol * 100) / 100 });
 
     addEntry({
-      calculator: isKa ? "შაქარი სიმკვრივით" : "Sugar by Density",
+      calculatorId: "sugar-by-density",
+      calculatorName: isKa ? "შაქარი სიმკვრივით" : "Sugar by Density",
       inputs: { temperature: temp, density: dens },
-      result: `${sugar.toFixed(1)} g/L`,
+      result: sugar,
+      unit: "g/L",
+      details: `${sugar.toFixed(1)} g/L sugar, ${potentialAlcohol.toFixed(2)}% potential alcohol`,
     });
 
     toast.success(isKa ? "შენახულია" : "Saved");

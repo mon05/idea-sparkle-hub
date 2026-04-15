@@ -47,9 +47,12 @@ const VolatileAcidityPage = () => {
     });
 
     addEntry({
-      calculator: isKa ? "აქროლადი მჟავიანობა" : "Volatile Acidity",
+      calculatorId: "volatile-acidity",
+      calculatorName: isKa ? "აქროლადი მჟავიანობა" : "Volatile Acidity",
       inputs: { naohVolume: vNaOH, normality, sampleVolume: vSample, freeSO2: so2 },
-      result: `${correctedVa.toFixed(2)} g/L (acetic)`,
+      result: correctedVa,
+      unit: "g/L",
+      details: `${correctedVa.toFixed(2)} g/L (acetic, SO₂ corrected)`,
     });
     toast.success(isKa ? "შენახულია" : "Saved");
   };
