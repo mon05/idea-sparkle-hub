@@ -44,6 +44,17 @@ export const calculatorCategories: CalculatorCategory[] = [
     icon: "🍬",
     calculators: [
       { id: "sugar-adjustment", name: "Sugar Adjustment", description: "Calculate sugar additions for Brix increase", path: "/calculator/sugar-adjustment" },
+      { id: "sugar-by-density", name: "Sugar by Density", description: "Estimate sugar from density & temperature", path: "/calculator/sugar-by-density" },
+    ],
+  },
+  {
+    id: "analysis",
+    name: "Wine Analysis",
+    description: "Acidity analysis calculators",
+    icon: "📋",
+    calculators: [
+      { id: "total-acidity", name: "Total Acidity", description: "Calculate TA from titration data", path: "/calculator/total-acidity" },
+      { id: "volatile-acidity", name: "Volatile Acidity", description: "Calculate VA from distillation results", path: "/calculator/volatile-acidity" },
     ],
   },
   {
