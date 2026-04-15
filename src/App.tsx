@@ -33,6 +33,9 @@ import HydrogenPeroxidePage from "./pages/calculators/HydrogenPeroxidePage";
 import DeacidificationPage from "./pages/calculators/DeacidificationPage";
 import FiningTrialPage from "./pages/calculators/FiningTrialPage";
 import SugarAdjustmentPage from "./pages/calculators/SugarAdjustmentPage";
+import SugarByDensityPage from "./pages/calculators/SugarByDensityPage";
+import TotalAcidityPage from "./pages/calculators/TotalAcidityPage";
+import VolatileAcidityPage from "./pages/calculators/VolatileAcidityPage";
 
 const queryClient = new QueryClient();
 
@@ -73,6 +76,11 @@ const App = () => (
           
           {/* Sugar Adjustments */}
           <Route path="/calculator/sugar-adjustment" element={<SugarAdjustmentPage />} />
+          <Route path="/calculator/sugar-by-density" element={<SugarByDensityPage />} />
+          
+          {/* Analysis */}
+          <Route path="/calculator/total-acidity" element={<TotalAcidityPage />} />
+          <Route path="/calculator/volatile-acidity" element={<VolatileAcidityPage />} />
           
           {/* Nutrients & Stabilizers */}
           <Route path="/calculator/dap" element={<DAPPage />} />

@@ -42,6 +42,10 @@ export const translations = {
         name: "Sugar Adjustments",
         description: "Sugar additions for chaptalization",
       },
+      analysis: {
+        name: "Wine Analysis",
+        description: "Acidity analysis calculators",
+      },
       conversions: {
         name: "Unit Conversions",
         description: "General conversion calculators",
@@ -65,6 +69,9 @@ export const translations = {
       dap: { name: "DAP Addition", description: "Calculate diammonium phosphate additions" },
       "sorbic-acid": { name: "Sorbic Acid", description: "Calculate sorbic acid for stabilization" },
       "sugar-adjustment": { name: "Sugar Adjustment", description: "Calculate sugar additions for Brix increase" },
+      "sugar-by-density": { name: "Sugar by Density", description: "Estimate sugar from density & temperature" },
+      "total-acidity": { name: "Total Acidity", description: "Calculate TA from titration data" },
+      "volatile-acidity": { name: "Volatile Acidity", description: "Calculate VA from distillation results" },
       "alcohol-addition": { name: "Alcohol Addition", description: "Calculate spirit additions" },
       "alcohol-dilution": { name: "Alcohol Dilution", description: "Calculate water dilution for alcohol" },
       concentration: { 
@@ -544,6 +551,10 @@ export const translations = {
         name: "შაქრის კორექტირება",
         description: "შაქრის დამატება შაპტალიზაციისთვის",
       },
+      analysis: {
+        name: "ღვინის ანალიზი",
+        description: "მჟავიანობის ანალიზის კალკულატორები",
+      },
       conversions: {
         name: "ერთეულების კონვერტაცია",
         description: "ზოგადი კონვერტაციის კალკულატორები",
@@ -567,6 +578,9 @@ export const translations = {
       dap: { name: "DAP დამატება", description: "გამოთვალეთ დიამონიუმ ფოსფატის დამატება" },
       "sorbic-acid": { name: "სორბინმჟავა", description: "გამოთვალეთ სორბინმჟავა სტაბილიზაციისთვის" },
       "sugar-adjustment": { name: "შაქრის კორექტირება", description: "გამოთვალეთ შაქრის დამატება ბრიქსის გასაზრდელად" },
+      "sugar-by-density": { name: "შაქარი სიმკვრივით", description: "შაქრის დონის შეფასება სიმკვრივისა და ტემპერატურის მიხედვით" },
+      "total-acidity": { name: "საერთო მჟავიანობა", description: "TA გამოთვლა ტიტრაციის მონაცემებით" },
+      "volatile-acidity": { name: "აქროლადი მჟავიანობა", description: "VA გამოთვლა დისტილაციის შედეგებით" },
       "alcohol-addition": { name: "ალკოჰოლის დამატება", description: "გამოთვალეთ სპირტის დამატება" },
       "alcohol-dilution": { name: "ალკოჰოლის განზავება", description: "გამოთვალეთ წყლით განზავება ალკოჰოლისთვის" },
       concentration: { 
