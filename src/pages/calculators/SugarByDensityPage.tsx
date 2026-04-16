@@ -12,7 +12,7 @@ const SugarByDensityPage = () => {
   const { addEntry } = useCalculationHistory();
   const [temperature, setTemperature] = useState("");
   const [density, setDensity] = useState("");
-  const [result, setResult] = useState<{ sugar: number; correctedDensity: number; potentialAlcohol: number } | null>(null);
+  const [result, setResult] = useState<{ sugar: number; sugarPercent: number; correctedDensity: number; potentialAlcohol: number } | null>(null);
 
   const isKa = language === "ka";
 
@@ -33,10 +33,13 @@ const SugarByDensityPage = () => {
     const sugarGL = (correctedDensity - 1.0) * 2600;
     const sugar = Math.max(0, Math.round(sugarGL * 10) / 10);
 
+    // Sugar in % (g/100mL) = sugar(g/L) / 10 / density
+    const sugarPercent = Math.round((sugar / 10 / correctedDensity) * 100) / 100;
+
     // Potential alcohol ≈ sugar / 16.83
     const potentialAlcohol = Math.round((sugar / 16.83) * 100) / 100;
 
-    setResult({ sugar, correctedDensity: Math.round(correctedDensity * 10000) / 10000, potentialAlcohol });
+    setResult({ sugar, sugarPercent, correctedDensity: Math.round(correctedDensity * 10000) / 10000, potentialAlcohol });
 
     addEntry({
       calculatorId: "sugar-by-density",
@@ -105,9 +108,9 @@ const SugarByDensityPage = () => {
                    <span className="text-sm text-muted-foreground">{isKa ? "კორექტირებული სიმკვრივე (20°C)" : "Corrected density (20°C)"}</span>
                    <span className="font-semibold">{result.correctedDensity}</span>
                 </div>
-                <div className="flex justify-between">
+                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">{isKa ? "შაქრის დონე" : "Sugar level"}</span>
-                  <span className="font-bold text-lg text-primary">{result.sugar} g/L</span>
+                  <span className="font-bold text-lg text-primary">{result.sugarPercent}% ({result.sugar} g/L)</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">{isKa ? "პოტენციური ალკოჰოლი" : "Potential alcohol"}</span>
