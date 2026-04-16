@@ -23,31 +23,29 @@ const SugarByDensityPage = () => {
 
   const calculate = () => {
     const temp = parseFloat(temperature);
-    const dens = parseFloat(density);
-    if (isNaN(temp) || isNaN(dens)) return;
+    const densGL = parseFloat(density);
+    if (isNaN(temp) || isNaN(densGL)) return;
+
+    // Convert g/L to g/mL for calculation
+    const dens = densGL / 1000;
 
     // Temperature correction for density (reference 20°C)
-    // Correction factor ≈ 0.0002 per °C difference from 20°C
     const correctedDensity = dens + (temp - 20) * 0.0002;
+    const correctedDensityGL = Math.round(correctedDensity * 10000) / 10;
 
-    // Sugar estimation from corrected density
-    // Approximate: sugar (g/L) ≈ (corrected_density - 1.0) * 2600
-    // This is a standard approximation used in enology
+    // Sugar estimation: sugar (g/L) ≈ (corrected_density - 1.0) * 2600
     const sugarGL = (correctedDensity - 1.0) * 2600;
-    const sugar = Math.max(0, sugarGL);
-
-    // Brix approximation from density
-    const brix = ((182.4602 * correctedDensity - 775.6821) * correctedDensity + 1262.7794) * correctedDensity - 669.5622;
+    const sugar = Math.max(0, Math.round(sugarGL * 10) / 10);
 
     // Potential alcohol ≈ sugar / 16.83
-    const potentialAlcohol = sugar / 16.83;
+    const potentialAlcohol = Math.round((sugar / 16.83) * 100) / 100;
 
-    setResult({ sugar: Math.round(sugar * 10) / 10, correctedDensity: Math.round(correctedDensity * 10000) / 10000, potentialAlcohol: Math.round(potentialAlcohol * 100) / 100 });
+    setResult({ sugar, correctedDensity: correctedDensityGL, potentialAlcohol });
 
     addEntry({
       calculatorId: "sugar-by-density",
       calculatorName: isKa ? "შაქარი სიმკვრივით" : "Sugar by Density",
-      inputs: { temperature: temp, density: dens },
+      inputs: { temperature: temp, density: densGL },
       result: sugar,
       unit: "g/L",
       details: `${sugar.toFixed(1)} g/L sugar, ${potentialAlcohol.toFixed(2)}% potential alcohol`,
@@ -89,11 +87,11 @@ const SugarByDensityPage = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium">{isKa ? "სიმკვრივე" : "Density"} (g/mL)</label>
+              <label className="text-sm font-medium">{isKa ? "სიმკვრივე" : "Density"} (g/L)</label>
               <Input
                 type="number"
-                step="0.0001"
-                placeholder="1.0850"
+                step="0.1"
+                placeholder="1085"
                 value={density}
                 onChange={(e) => setDensity(e.target.value)}
               />
@@ -108,8 +106,8 @@ const SugarByDensityPage = () => {
             {result && (
               <div className="rounded-xl bg-primary/10 p-4 space-y-2 animate-fade-in">
                 <div className="flex justify-between">
-                  <span className="text-sm text-muted-foreground">{isKa ? "კორექტირებული სიმკვრივე (20°C)" : "Corrected density (20°C)"}</span>
-                  <span className="font-semibold">{result.correctedDensity}</span>
+                   <span className="text-sm text-muted-foreground">{isKa ? "კორექტირებული სიმკვრივე (20°C)" : "Corrected density (20°C)"}</span>
+                   <span className="font-semibold">{result.correctedDensity} g/L</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">{isKa ? "შაქრის დონე" : "Sugar level"}</span>
@@ -127,9 +125,9 @@ const SugarByDensityPage = () => {
         <div className="rounded-xl bg-muted/50 p-4 text-sm text-muted-foreground animate-fade-in">
           <h3 className="font-semibold text-foreground mb-2">{isKa ? "შენიშვნები" : "Notes"}</h3>
           <ul className="space-y-1">
-            <li>• {isKa ? "სიმკვრივე კალიბრებულია 20°C-ზე; ტემპერატურის კორექცია ხდება ავტომატურად" : "Density is calibrated at 20°C; temperature correction is applied automatically"}</li>
-            <li>• {isKa ? "1.000 სიმკვრივე = მშრალი ღვინო (შაქრის გარეშე)" : "Density of 1.000 = dry wine (no residual sugar)"}</li>
-            <li>• {isKa ? "ფორმულა: შაქარი ≈ (სიმკვრივე - 1.0) × 2600 გ/ლ" : "Formula: sugar ≈ (density - 1.0) × 2600 g/L"}</li>
+             <li>• {isKa ? "სიმკვრივე კალიბრებულია 20°C-ზე; ტემპერატურის კორექცია ხდება ავტომატურად" : "Density is calibrated at 20°C; temperature correction is applied automatically"}</li>
+            <li>• {isKa ? "1000 გ/ლ სიმკვრივე = მშრალი ღვინო (შაქრის გარეშე)" : "Density of 1000 g/L = dry wine (no residual sugar)"}</li>
+            <li>• {isKa ? "ფორმულა: შაქარი ≈ (სიმკვრივე/1000 - 1.0) × 2600 გ/ლ" : "Formula: sugar ≈ (density/1000 - 1.0) × 2600 g/L"}</li>
             <li>• {isKa ? "პოტენციური ალკოჰოლი ≈ შაქარი / 16.83" : "Potential alcohol ≈ sugar / 16.83"}</li>
           </ul>
         </div>
