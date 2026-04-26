@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+html, body, #root {
+  min-height: 100%;
+}
+
+body {
+  padding-top: env(safe-area-inset-top);
+}
+.pt-safe {
+  padding-top: calc(env(safe-area-inset-top) + 12px);
+}
