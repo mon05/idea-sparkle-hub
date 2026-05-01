@@ -48,8 +48,8 @@ const Header = () => {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-80">
-              <nav className="flex flex-col gap-4 mt-8">
+            <SheetContent side="right" className="w-80 overflow-y-auto">
+              <nav className="flex flex-col gap-4 mt-8 pb-8">
                 {calculatorCategories.map((category) => {
                   const categoryTranslation = t.categories[category.id as keyof typeof t.categories];
                   return (
