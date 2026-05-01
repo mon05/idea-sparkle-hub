@@ -143,22 +143,20 @@ const CellarTasks = () => {
         </Button>
       </SheetTrigger>
       <SheetContent className="w-full sm:max-w-md flex flex-col p-0">
-        <SheetHeader className="p-4 border-b border-border">
-          <div className="flex items-center justify-between">
-            <SheetTitle className="flex items-center gap-2">
-              <Bell className="h-5 w-5 text-primary" />
-              {t("Cellar Tasks", "მარნის ამოცანები")}
-            </SheetTitle>
-            <div className="flex gap-1">
-              <Button variant="outline" size="sm" onClick={() => { setShowTemplates(!showTemplates); setShowForm(false); }}>
-                <RepeatIcon className="h-4 w-4 mr-1" />
-                {t("Templates", "შაბლონები")}
-              </Button>
-              <Button variant="outline" size="sm" onClick={() => { setShowForm(!showForm); setShowTemplates(false); }}>
-                <Plus className="h-4 w-4 mr-1" />
-                {t("New", "ახალი")}
-              </Button>
-            </div>
+        <SheetHeader className="p-4 pr-12 border-b border-border">
+          <SheetTitle className="flex items-center gap-2">
+            <Bell className="h-5 w-5 text-primary" />
+            {t("Cellar Tasks", "მარნის ამოცანები")}
+          </SheetTitle>
+          <div className="flex gap-2 pt-2">
+            <Button variant="outline" size="sm" onClick={() => { setShowTemplates(!showTemplates); setShowForm(false); }}>
+              <RepeatIcon className="h-4 w-4 mr-1" />
+              {t("Templates", "შაბლონები")}
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => { setShowForm(!showForm); setShowTemplates(false); }}>
+              <Plus className="h-4 w-4 mr-1" />
+              {t("New", "ახალი")}
+            </Button>
           </div>
         </SheetHeader>
 
