@@ -38,7 +38,7 @@ const CopperSulfatePage = () => {
             Copper Sulfate Addition
           </h1>
           <p className="text-muted-foreground">
-            Calculate copper sulfate additions to remove hydrogen sulfide and reduce excessive SO₂.
+            Calculate copper sulfate additions for hydrogen sulfide (H₂S) off-odours after a laboratory bench trial.
           </p>
         </section>
 
@@ -53,7 +53,7 @@ const CopperSulfatePage = () => {
         <div className="rounded-xl bg-muted/50 p-4 text-sm text-muted-foreground animate-fade-in">
           <h3 className="font-semibold text-foreground mb-2">Guidelines</h3>
           <ul className="space-y-1">
-            <li>• Legal limit: 1 mg/L copper in finished wine</li>
+            <li>• Confirm residual copper limits for the destination market</li>
             <li>• Start with lower rates and retest</li>
             <li>• May require filtration after treatment</li>
             <li>• Conduct bench trials first</li>
