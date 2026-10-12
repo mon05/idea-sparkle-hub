@@ -63,12 +63,21 @@ const ScrollPositionManager = () => {
 
     // Save before router links change their destination; regular scrolls keep
     // the snapshot up to date for browser swipe-back and hardware Back.
-    window.addEventListener("scroll", save, { passive: true });
+    const saveOnScroll = () => {
+      // Ignore the outgoing page's scroll-to-top event after navigation.
+      if (window.location.pathname === location.pathname &&
+          window.location.search === location.search) {
+        save();
+      }
+    };
+    window.addEventListener("scroll", saveOnScroll, { passive: true });
     document.addEventListener("click", save, true);
+    window.addEventListener("popstate", save);
     window.addEventListener("pagehide", save);
     return () => {
-      window.removeEventListener("scroll", save);
+      window.removeEventListener("scroll", saveOnScroll);
       document.removeEventListener("click", save, true);
+      window.removeEventListener("popstate", save);
       window.removeEventListener("pagehide", save);
     };
   }, [location.pathname, location.search]);
