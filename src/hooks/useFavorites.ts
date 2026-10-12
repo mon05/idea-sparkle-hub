@@ -1,42 +1,54 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 
-const STORAGE_KEY = 'winecalc_favorites';
+const STORAGE_KEY = "winecalc_favorites";
+const CHANGE_EVENT = "winecalc:favorites-changed";
+
+const readFavorites = (): string[] => {
+  try {
+    const saved: unknown = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    return Array.isArray(saved)
+      ? saved.filter((id): id is string => typeof id === "string")
+      : [];
+  } catch {
+    return [];
+  }
+};
 
 export const useFavorites = () => {
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [favorites, setFavorites] = useState<string[]>(readFavorites);
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        setFavorites(JSON.parse(stored));
-      }
-    } catch (error) {
-      console.error('Failed to load favorites:', error);
-    }
-  }, []);
-
-  const saveToStorage = useCallback((items: string[]) => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-    } catch (error) {
-      console.error('Failed to save favorites:', error);
-    }
+    const sync = () => setFavorites(readFavorites());
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === STORAGE_KEY) sync();
+    };
+    window.addEventListener(CHANGE_EVENT, sync);
+    window.addEventListener("storage", onStorage);
+    return () => {
+      window.removeEventListener(CHANGE_EVENT, sync);
+      window.removeEventListener("storage", onStorage);
+    };
   }, []);
 
   const toggleFavorite = useCallback((calculatorId: string) => {
-    setFavorites((prev) => {
-      const updated = prev.includes(calculatorId)
-        ? prev.filter((id) => id !== calculatorId)
-        : [...prev, calculatorId];
-      saveToStorage(updated);
-      return updated;
-    });
-  }, [saveToStorage]);
+    const current = readFavorites();
+    const updated = current.includes(calculatorId)
+      ? current.filter((id) => id !== calculatorId)
+      : [...current, calculatorId];
 
-  const isFavorite = useCallback((calculatorId: string) => {
-    return favorites.includes(calculatorId);
-  }, [favorites]);
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    } catch {
+      // Keep in-memory state useful even in restricted browsing modes.
+    }
+    setFavorites(updated);
+    window.dispatchEvent(new Event(CHANGE_EVENT));
+  }, []);
+
+  const isFavorite = useCallback(
+    (calculatorId: string) => favorites.includes(calculatorId),
+    [favorites]
+  );
 
   return { favorites, toggleFavorite, isFavorite };
 };
