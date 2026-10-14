@@ -33,7 +33,7 @@ export const calculatorCategories: CalculatorCategory[] = [
     icon: "🔬",
     calculators: [
       { id: "pms", name: "PMS Addition", description: "Calculate potassium metabisulfite additions", path: "/calculator/pms" },
-      { id: "copper-sulfate", name: "Copper Sulfate", description: "Remove excessive SO2", path: "/calculator/copper-sulfate" },
+      { id: "copper-sulfate", name: "Copper Sulfate", description: "Copper treatment for hydrogen sulfide (H2S) off-odours", path: "/calculator/copper-sulfate" },
       { id: "hydrogen-peroxide", name: "Hydrogen Peroxide", description: "Decrease SO2 with H2O2", path: "/calculator/hydrogen-peroxide" },
     ],
   },
